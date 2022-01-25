@@ -1,0 +1,1256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.0.3 (Python 3.6.5 on win32)" generated="20220125 19:39:11.762" rpa="false" schemaversion="2">
+<suite id="s1" name="BBCNews" source="C:\NavDevelop\hmh-robot-automation\tests\BBCNews.robot">
+<test id="s1-t1" name="Verify the Top Navigation Links">
+<kw name="Begin Chrome Web Test" library="Common" type="SETUP">
+<doc>Test Setup opens a browser</doc>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${chrome_browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220125 19:39:12.146" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220125 19:39:12.146" endtime="20220125 19:39:13.700"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220125 19:39:13.700" endtime="20220125 19:39:13.843"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:12.146" endtime="20220125 19:39:13.844"/>
+</kw>
+<kw name="Given Common.Go To BBC News Page" library="Common">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${link}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220125 19:39:13.848" level="INFO">Opening url 'https://www.bbc.com/'</msg>
+<status status="PASS" starttime="20220125 19:39:13.847" endtime="20220125 19:39:16.273"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:13.846" endtime="20220125 19:39:16.274"/>
+</kw>
+<kw name="When BBCNewsActionsMenu.Page Title Is" library="BBCNewsActionsMenu">
+<arg>Home - BBC News</arg>
+<kw name="Get Title" library="SeleniumLibrary">
+<var>${actual_page_title}</var>
+<doc>Returns the title of the current page.</doc>
+<msg timestamp="20220125 19:39:16.292" level="INFO">${actual_page_title} = BBC - Homepage</msg>
+<status status="PASS" starttime="20220125 19:39:16.277" endtime="20220125 19:39:16.292"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Title Should Be</arg>
+<arg>${actual_page_title}</arg>
+<arg>${expected_page_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${actual_page_title}</arg>
+<arg>${expected_page_title}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220125 19:39:16.300" level="INFO">Page title is 'BBC - Homepage'.</msg>
+<status status="PASS" starttime="20220125 19:39:16.293" endtime="20220125 19:39:16.300"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:16.292" endtime="20220125 19:39:16.300"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:16.276" endtime="20220125 19:39:16.300"/>
+</kw>
+<kw name="Then BBCNewsActionsMenu.Cosent To Share Your Personal Data" library="BBCNewsActionsMenu">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${permission_consent_dialog_header}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220125 19:39:16.302" endtime="20220125 19:39:16.348"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Click Element</arg>
+<arg>${permission_consent_dialog_consent_button}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${permission_consent_dialog_consent_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:16.349" level="INFO">Clicking element '//button[@class="fc-button fc-cta-consent fc-primary-button"]//p[text()="Consent"]'.</msg>
+<status status="PASS" starttime="20220125 19:39:16.349" endtime="20220125 19:39:16.498"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:16.348" endtime="20220125 19:39:16.498"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:16.301" endtime="20220125 19:39:16.498"/>
+</kw>
+<kw name="And BBCNewsActionsMenu.Validate Home Page" library="BBCNewsActionsMenu">
+<arg>Welcome to BBC.com</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${welcome_page}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220125 19:39:16.501" endtime="20220125 19:39:16.681"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Element Text Should Be</arg>
+<arg>${welcome_page}</arg>
+<arg>${expected_home_page_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${welcome_page}</arg>
+<arg>${expected_home_page_title}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220125 19:39:16.683" level="INFO">Verifying element '//*[@id="page"]//h2[@class="module__title"]/span' contains exact text 'Welcome to BBC.com'.</msg>
+<status status="PASS" starttime="20220125 19:39:16.682" endtime="20220125 19:39:16.732"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:16.682" endtime="20220125 19:39:16.732"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:16.500" endtime="20220125 19:39:16.732"/>
+</kw>
+<kw name="And BBCNewsActionsMenu.Main Navigation Link Should Be" library="BBCNewsActionsMenu">
+<arg>Home</arg>
+<arg>1</arg>
+<kw name="Replace String" library="String">
+<var>${link_list}</var>
+<arg>${navigation_link_list}</arg>
+<arg>INDEX</arg>
+<arg>${link_list_index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220125 19:39:16.734" level="INFO">${link_list} = (//div[@id="orb-nav-links"]//ul/li)[1]</msg>
+<status status="PASS" starttime="20220125 19:39:16.733" endtime="20220125 19:39:16.734"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220125 19:39:16.734" endtime="20220125 19:39:16.754"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Element Text Should Be</arg>
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220125 19:39:16.758" level="INFO">Verifying element '(//div[@id="orb-nav-links"]//ul/li)[1]' contains exact text 'Home'.</msg>
+<status status="PASS" starttime="20220125 19:39:16.756" endtime="20220125 19:39:16.840"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:16.755" endtime="20220125 19:39:16.840"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:16.733" endtime="20220125 19:39:16.841"/>
+</kw>
+<kw name="And BBCNewsActionsMenu.Main Navigation Link Should Be" library="BBCNewsActionsMenu">
+<arg>News</arg>
+<arg>2</arg>
+<kw name="Replace String" library="String">
+<var>${link_list}</var>
+<arg>${navigation_link_list}</arg>
+<arg>INDEX</arg>
+<arg>${link_list_index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220125 19:39:16.843" level="INFO">${link_list} = (//div[@id="orb-nav-links"]//ul/li)[2]</msg>
+<status status="PASS" starttime="20220125 19:39:16.843" endtime="20220125 19:39:16.843"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220125 19:39:16.843" endtime="20220125 19:39:16.856"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Element Text Should Be</arg>
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220125 19:39:16.859" level="INFO">Verifying element '(//div[@id="orb-nav-links"]//ul/li)[2]' contains exact text 'News'.</msg>
+<status status="PASS" starttime="20220125 19:39:16.858" endtime="20220125 19:39:16.878"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:16.857" endtime="20220125 19:39:16.878"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:16.842" endtime="20220125 19:39:16.879"/>
+</kw>
+<kw name="And BBCNewsActionsMenu.Main Navigation Link Should Be" library="BBCNewsActionsMenu">
+<arg>Sport</arg>
+<arg>3</arg>
+<kw name="Replace String" library="String">
+<var>${link_list}</var>
+<arg>${navigation_link_list}</arg>
+<arg>INDEX</arg>
+<arg>${link_list_index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220125 19:39:16.880" level="INFO">${link_list} = (//div[@id="orb-nav-links"]//ul/li)[3]</msg>
+<status status="PASS" starttime="20220125 19:39:16.880" endtime="20220125 19:39:16.880"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220125 19:39:16.880" endtime="20220125 19:39:16.892"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Element Text Should Be</arg>
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220125 19:39:16.893" level="INFO">Verifying element '(//div[@id="orb-nav-links"]//ul/li)[3]' contains exact text 'Sport'.</msg>
+<status status="PASS" starttime="20220125 19:39:16.893" endtime="20220125 19:39:16.923"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:16.892" endtime="20220125 19:39:16.923"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:16.879" endtime="20220125 19:39:16.923"/>
+</kw>
+<kw name="And BBCNewsActionsMenu.Main Navigation Link Should Be" library="BBCNewsActionsMenu">
+<arg>Reel</arg>
+<arg>4</arg>
+<kw name="Replace String" library="String">
+<var>${link_list}</var>
+<arg>${navigation_link_list}</arg>
+<arg>INDEX</arg>
+<arg>${link_list_index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220125 19:39:16.926" level="INFO">${link_list} = (//div[@id="orb-nav-links"]//ul/li)[4]</msg>
+<status status="PASS" starttime="20220125 19:39:16.925" endtime="20220125 19:39:16.926"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220125 19:39:16.926" endtime="20220125 19:39:17.011"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Element Text Should Be</arg>
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220125 19:39:17.012" level="INFO">Verifying element '(//div[@id="orb-nav-links"]//ul/li)[4]' contains exact text 'Reel'.</msg>
+<status status="PASS" starttime="20220125 19:39:17.011" endtime="20220125 19:39:17.035"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:17.011" endtime="20220125 19:39:17.035"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:16.924" endtime="20220125 19:39:17.036"/>
+</kw>
+<kw name="And BBCNewsActionsMenu.Main Navigation Link Should Be" library="BBCNewsActionsMenu">
+<arg>Worklife</arg>
+<arg>5</arg>
+<kw name="Replace String" library="String">
+<var>${link_list}</var>
+<arg>${navigation_link_list}</arg>
+<arg>INDEX</arg>
+<arg>${link_list_index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220125 19:39:17.038" level="INFO">${link_list} = (//div[@id="orb-nav-links"]//ul/li)[5]</msg>
+<status status="PASS" starttime="20220125 19:39:17.037" endtime="20220125 19:39:17.038"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220125 19:39:17.038" endtime="20220125 19:39:17.055"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Element Text Should Be</arg>
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220125 19:39:17.057" level="INFO">Verifying element '(//div[@id="orb-nav-links"]//ul/li)[5]' contains exact text 'Worklife'.</msg>
+<status status="PASS" starttime="20220125 19:39:17.056" endtime="20220125 19:39:17.085"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:17.055" endtime="20220125 19:39:17.085"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:17.036" endtime="20220125 19:39:17.085"/>
+</kw>
+<kw name="And BBCNewsActionsMenu.Main Navigation Link Should Be" library="BBCNewsActionsMenu">
+<arg>Travel</arg>
+<arg>6</arg>
+<kw name="Replace String" library="String">
+<var>${link_list}</var>
+<arg>${navigation_link_list}</arg>
+<arg>INDEX</arg>
+<arg>${link_list_index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220125 19:39:17.087" level="INFO">${link_list} = (//div[@id="orb-nav-links"]//ul/li)[6]</msg>
+<status status="PASS" starttime="20220125 19:39:17.086" endtime="20220125 19:39:17.087"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220125 19:39:17.087" endtime="20220125 19:39:17.098"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Element Text Should Be</arg>
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220125 19:39:17.100" level="INFO">Verifying element '(//div[@id="orb-nav-links"]//ul/li)[6]' contains exact text 'Travel'.</msg>
+<status status="PASS" starttime="20220125 19:39:17.099" endtime="20220125 19:39:17.143"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:17.098" endtime="20220125 19:39:17.143"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:17.086" endtime="20220125 19:39:17.143"/>
+</kw>
+<kw name="And BBCNewsActionsMenu.Main Navigation Link Should Be" library="BBCNewsActionsMenu">
+<arg>Future</arg>
+<arg>7</arg>
+<kw name="Replace String" library="String">
+<var>${link_list}</var>
+<arg>${navigation_link_list}</arg>
+<arg>INDEX</arg>
+<arg>${link_list_index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220125 19:39:17.145" level="INFO">${link_list} = (//div[@id="orb-nav-links"]//ul/li)[7]</msg>
+<status status="PASS" starttime="20220125 19:39:17.145" endtime="20220125 19:39:17.145"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220125 19:39:17.146" endtime="20220125 19:39:17.160"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Element Text Should Be</arg>
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220125 19:39:17.161" level="INFO">Verifying element '(//div[@id="orb-nav-links"]//ul/li)[7]' contains exact text 'Future'.</msg>
+<status status="PASS" starttime="20220125 19:39:17.161" endtime="20220125 19:39:17.190"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:17.160" endtime="20220125 19:39:17.190"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:17.144" endtime="20220125 19:39:17.191"/>
+</kw>
+<kw name="And BBCNewsActionsMenu.Main Navigation Link Should Be" library="BBCNewsActionsMenu">
+<arg>Culture</arg>
+<arg>8</arg>
+<kw name="Replace String" library="String">
+<var>${link_list}</var>
+<arg>${navigation_link_list}</arg>
+<arg>INDEX</arg>
+<arg>${link_list_index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220125 19:39:17.193" level="INFO">${link_list} = (//div[@id="orb-nav-links"]//ul/li)[8]</msg>
+<status status="PASS" starttime="20220125 19:39:17.193" endtime="20220125 19:39:17.193"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220125 19:39:17.193" endtime="20220125 19:39:17.207"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Element Text Should Be</arg>
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${link_list}</arg>
+<arg>${expected_title}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220125 19:39:17.208" level="INFO">Verifying element '(//div[@id="orb-nav-links"]//ul/li)[8]' contains exact text 'Culture'.</msg>
+<status status="PASS" starttime="20220125 19:39:17.207" endtime="20220125 19:39:17.234"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:17.207" endtime="20220125 19:39:17.234"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:17.192" endtime="20220125 19:39:17.235"/>
+</kw>
+<kw name="End Web Test" library="Common" type="TEARDOWN">
+<doc>Closes the browser</doc>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220125 19:39:17.236" endtime="20220125 19:39:19.719"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:17.235" endtime="20220125 19:39:19.719"/>
+</kw>
+<doc>This test is to verify the top navigation links of bbc website</doc>
+<tag>UI Functional Test</tag>
+<status status="PASS" starttime="20220125 19:39:12.144" endtime="20220125 19:39:19.720"/>
+</test>
+<test id="s1-t2" name="Verify the day and date displayed on the page is correct">
+<kw name="Begin Chrome Web Test" library="Common" type="SETUP">
+<doc>Test Setup opens a browser</doc>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${chrome_browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220125 19:39:19.723" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220125 19:39:19.723" endtime="20220125 19:39:21.268"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220125 19:39:21.268" endtime="20220125 19:39:21.412"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:19.722" endtime="20220125 19:39:21.412"/>
+</kw>
+<kw name="Given Common.Go To BBC News Page" library="Common">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${link}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220125 19:39:21.414" level="INFO">Opening url 'https://www.bbc.com/'</msg>
+<status status="PASS" starttime="20220125 19:39:21.414" endtime="20220125 19:39:24.147"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:21.413" endtime="20220125 19:39:24.147"/>
+</kw>
+<kw name="When BBCNewsActionsMenu.Page Title Is" library="BBCNewsActionsMenu">
+<arg>Home - BBC News</arg>
+<kw name="Get Title" library="SeleniumLibrary">
+<var>${actual_page_title}</var>
+<doc>Returns the title of the current page.</doc>
+<msg timestamp="20220125 19:39:24.155" level="INFO">${actual_page_title} = BBC - Homepage</msg>
+<status status="PASS" starttime="20220125 19:39:24.149" endtime="20220125 19:39:24.155"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Title Should Be</arg>
+<arg>${actual_page_title}</arg>
+<arg>${expected_page_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${actual_page_title}</arg>
+<arg>${expected_page_title}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220125 19:39:24.160" level="INFO">Page title is 'BBC - Homepage'.</msg>
+<status status="PASS" starttime="20220125 19:39:24.156" endtime="20220125 19:39:24.160"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:24.155" endtime="20220125 19:39:24.160"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:24.148" endtime="20220125 19:39:24.160"/>
+</kw>
+<kw name="Then BBCNewsActionsMenu.Cosent To Share Your Personal Data" library="BBCNewsActionsMenu">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${permission_consent_dialog_header}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220125 19:39:24.161" endtime="20220125 19:39:24.191"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Click Element</arg>
+<arg>${permission_consent_dialog_consent_button}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${permission_consent_dialog_consent_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:24.192" level="INFO">Clicking element '//button[@class="fc-button fc-cta-consent fc-primary-button"]//p[text()="Consent"]'.</msg>
+<status status="PASS" starttime="20220125 19:39:24.192" endtime="20220125 19:39:24.253"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:24.191" endtime="20220125 19:39:24.253"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:24.161" endtime="20220125 19:39:24.254"/>
+</kw>
+<kw name="And BBCNewsActionsMenu.Validate Home Page" library="BBCNewsActionsMenu">
+<arg>Welcome to BBC.com</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${welcome_page}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220125 19:39:24.257" endtime="20220125 19:39:24.279"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Element Text Should Be</arg>
+<arg>${welcome_page}</arg>
+<arg>${expected_home_page_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${welcome_page}</arg>
+<arg>${expected_home_page_title}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220125 19:39:24.282" level="INFO">Verifying element '//*[@id="page"]//h2[@class="module__title"]/span' contains exact text 'Welcome to BBC.com'.</msg>
+<status status="PASS" starttime="20220125 19:39:24.281" endtime="20220125 19:39:24.335"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:24.280" endtime="20220125 19:39:24.335"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:24.256" endtime="20220125 19:39:24.336"/>
+</kw>
+<kw name="And BBCNewsActionsMenu.Validate Day and Date" library="BBCNewsActionsMenu">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${expected_date}</var>
+<arg>${day_and_date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:24.367" level="INFO">${expected_date} = Welcome to BBC.com
+Tuesday, 25 January</msg>
+<status status="PASS" starttime="20220125 19:39:24.337" endtime="20220125 19:39:24.367"/>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<var>${actual_date}</var>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20220125 19:39:24.368" level="INFO">${actual_date} = 2022-01-25 19:39:24.368</msg>
+<status status="PASS" starttime="20220125 19:39:24.368" endtime="20220125 19:39:24.368"/>
+</kw>
+<kw name="Convert Date" library="DateTime">
+<var>${converted_actual_date}</var>
+<arg>${actual_date}</arg>
+<arg>result_format=%A, %d %B</arg>
+<doc>Converts between supported `date formats`.</doc>
+<msg timestamp="20220125 19:39:24.371" level="INFO">${converted_actual_date} = Tuesday, 25 January</msg>
+<status status="PASS" starttime="20220125 19:39:24.368" endtime="20220125 19:39:24.371"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${converted_expected_date}</var>
+<arg>${expected_date}</arg>
+<arg>19</arg>
+<arg>38</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20220125 19:39:24.372" level="INFO">${converted_expected_date} = Tuesday, 25 January</msg>
+<status status="PASS" starttime="20220125 19:39:24.372" endtime="20220125 19:39:24.372"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${converted_actual_date}</arg>
+<arg>${converted_expected_date}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20220125 19:39:24.372" endtime="20220125 19:39:24.373"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:24.336" endtime="20220125 19:39:24.373"/>
+</kw>
+<kw name="End Web Test" library="Common" type="TEARDOWN">
+<doc>Closes the browser</doc>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220125 19:39:24.374" endtime="20220125 19:39:26.829"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:24.374" endtime="20220125 19:39:26.829"/>
+</kw>
+<doc>This test is to verify the day and date displayed on the page is correct</doc>
+<tag>UI Functional Test</tag>
+<status status="PASS" starttime="20220125 19:39:19.721" endtime="20220125 19:39:26.829"/>
+</test>
+<test id="s1-t3" name="Navigate to the News section and verify url is correct">
+<kw name="Begin Chrome Web Test" library="Common" type="SETUP">
+<doc>Test Setup opens a browser</doc>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${chrome_browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220125 19:39:26.834" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220125 19:39:26.833" endtime="20220125 19:39:28.365"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220125 19:39:28.365" endtime="20220125 19:39:28.501"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:26.833" endtime="20220125 19:39:28.501"/>
+</kw>
+<kw name="Given Common.Go To BBC News Page" library="Common">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${link}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220125 19:39:28.503" level="INFO">Opening url 'https://www.bbc.com/'</msg>
+<status status="PASS" starttime="20220125 19:39:28.503" endtime="20220125 19:39:31.227"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:28.502" endtime="20220125 19:39:31.227"/>
+</kw>
+<kw name="When BBCNewsActionsMenu.Page Title Is" library="BBCNewsActionsMenu">
+<arg>Home - BBC News</arg>
+<kw name="Get Title" library="SeleniumLibrary">
+<var>${actual_page_title}</var>
+<doc>Returns the title of the current page.</doc>
+<msg timestamp="20220125 19:39:31.235" level="INFO">${actual_page_title} = BBC - Homepage</msg>
+<status status="PASS" starttime="20220125 19:39:31.228" endtime="20220125 19:39:31.235"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Title Should Be</arg>
+<arg>${actual_page_title}</arg>
+<arg>${expected_page_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${actual_page_title}</arg>
+<arg>${expected_page_title}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220125 19:39:31.245" level="INFO">Page title is 'BBC - Homepage'.</msg>
+<status status="PASS" starttime="20220125 19:39:31.236" endtime="20220125 19:39:31.245"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:31.236" endtime="20220125 19:39:31.245"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:31.228" endtime="20220125 19:39:31.245"/>
+</kw>
+<kw name="Then BBCNewsActionsMenu.Cosent To Share Your Personal Data" library="BBCNewsActionsMenu">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${permission_consent_dialog_header}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220125 19:39:31.247" endtime="20220125 19:39:31.283"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Click Element</arg>
+<arg>${permission_consent_dialog_consent_button}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${permission_consent_dialog_consent_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:31.284" level="INFO">Clicking element '//button[@class="fc-button fc-cta-consent fc-primary-button"]//p[text()="Consent"]'.</msg>
+<status status="PASS" starttime="20220125 19:39:31.284" endtime="20220125 19:39:31.347"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:31.283" endtime="20220125 19:39:31.347"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:31.246" endtime="20220125 19:39:31.348"/>
+</kw>
+<kw name="And BBCNewsActionsMenu.Validate Home Page" library="BBCNewsActionsMenu">
+<arg>Welcome to BBC.com</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${welcome_page}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220125 19:39:31.351" endtime="20220125 19:39:31.384"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Element Text Should Be</arg>
+<arg>${welcome_page}</arg>
+<arg>${expected_home_page_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${welcome_page}</arg>
+<arg>${expected_home_page_title}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220125 19:39:31.385" level="INFO">Verifying element '//*[@id="page"]//h2[@class="module__title"]/span' contains exact text 'Welcome to BBC.com'.</msg>
+<status status="PASS" starttime="20220125 19:39:31.385" endtime="20220125 19:39:31.436"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:31.384" endtime="20220125 19:39:31.436"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:31.350" endtime="20220125 19:39:31.436"/>
+</kw>
+<kw name="When BBCNewsActionsMenu.Click Navigation Link" library="BBCNewsActionsMenu">
+<arg>News</arg>
+<kw name="Replace String" library="String">
+<var>${link}</var>
+<arg>${navigation_link}</arg>
+<arg>LINK</arg>
+<arg>${link_name}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220125 19:39:31.438" level="INFO">${link} = //div[@id="orb-nav-links"]//ul/li/a[text()="News"]</msg>
+<status status="PASS" starttime="20220125 19:39:31.438" endtime="20220125 19:39:31.439"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${link}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220125 19:39:31.439" endtime="20220125 19:39:31.454"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Click Element</arg>
+<arg>${link}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${link}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:31.456" level="INFO">Clicking element '//div[@id="orb-nav-links"]//ul/li/a[text()="News"]'.</msg>
+<status status="PASS" starttime="20220125 19:39:31.455" endtime="20220125 19:39:32.743"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:31.454" endtime="20220125 19:39:32.743"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:31.437" endtime="20220125 19:39:32.744"/>
+</kw>
+<kw name="Then Verify the Current Url Is" library="BBCNewsActionsMenu">
+<arg>https://www.bbc.com/news</arg>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${expecetd_url}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20220125 19:39:32.752" level="INFO">${expecetd_url} = https://www.bbc.com/news</msg>
+<status status="PASS" starttime="20220125 19:39:32.745" endtime="20220125 19:39:32.752"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${expecetd_url}</arg>
+<arg>${expecetd_url}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20220125 19:39:32.752" endtime="20220125 19:39:32.753"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:32.745" endtime="20220125 19:39:32.753"/>
+</kw>
+<kw name="End Web Test" library="Common" type="TEARDOWN">
+<doc>Closes the browser</doc>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220125 19:39:32.754" endtime="20220125 19:39:35.250"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:32.753" endtime="20220125 19:39:35.250"/>
+</kw>
+<doc>This test is to verify News section is URL is correct</doc>
+<tag>UI Functional Test</tag>
+<status status="PASS" starttime="20220125 19:39:26.832" endtime="20220125 19:39:35.251"/>
+</test>
+<test id="s1-t4" name="Verify the search results">
+<kw name="Begin Chrome Web Test" library="Common" type="SETUP">
+<doc>Test Setup opens a browser</doc>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${chrome_browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220125 19:39:35.256" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220125 19:39:35.256" endtime="20220125 19:39:36.819"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220125 19:39:36.819" endtime="20220125 19:39:36.954"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:35.255" endtime="20220125 19:39:36.954"/>
+</kw>
+<kw name="Given Common.Go To BBC News Page" library="Common">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${link}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220125 19:39:36.956" level="INFO">Opening url 'https://www.bbc.com/'</msg>
+<status status="PASS" starttime="20220125 19:39:36.956" endtime="20220125 19:39:39.984"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:36.955" endtime="20220125 19:39:39.985"/>
+</kw>
+<kw name="When BBCNewsActionsMenu.Page Title Is" library="BBCNewsActionsMenu">
+<arg>Home - BBC News</arg>
+<kw name="Get Title" library="SeleniumLibrary">
+<var>${actual_page_title}</var>
+<doc>Returns the title of the current page.</doc>
+<msg timestamp="20220125 19:39:39.997" level="INFO">${actual_page_title} = BBC - Homepage</msg>
+<status status="PASS" starttime="20220125 19:39:39.988" endtime="20220125 19:39:39.997"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Title Should Be</arg>
+<arg>${actual_page_title}</arg>
+<arg>${expected_page_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${actual_page_title}</arg>
+<arg>${expected_page_title}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220125 19:39:40.008" level="INFO">Page title is 'BBC - Homepage'.</msg>
+<status status="PASS" starttime="20220125 19:39:39.998" endtime="20220125 19:39:40.008"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:39.997" endtime="20220125 19:39:40.008"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:39.987" endtime="20220125 19:39:40.008"/>
+</kw>
+<kw name="Then BBCNewsActionsMenu.Cosent To Share Your Personal Data" library="BBCNewsActionsMenu">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${permission_consent_dialog_header}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220125 19:39:40.010" endtime="20220125 19:39:40.045"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Click Element</arg>
+<arg>${permission_consent_dialog_consent_button}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${permission_consent_dialog_consent_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:40.046" level="INFO">Clicking element '//button[@class="fc-button fc-cta-consent fc-primary-button"]//p[text()="Consent"]'.</msg>
+<status status="PASS" starttime="20220125 19:39:40.046" endtime="20220125 19:39:40.119"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:40.045" endtime="20220125 19:39:40.119"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:40.009" endtime="20220125 19:39:40.119"/>
+</kw>
+<kw name="And BBCNewsActionsMenu.Validate Home Page" library="BBCNewsActionsMenu">
+<arg>Welcome to BBC.com</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${welcome_page}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220125 19:39:40.121" endtime="20220125 19:39:40.158"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Element Text Should Be</arg>
+<arg>${welcome_page}</arg>
+<arg>${expected_home_page_title}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${welcome_page}</arg>
+<arg>${expected_home_page_title}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220125 19:39:40.159" level="INFO">Verifying element '//*[@id="page"]//h2[@class="module__title"]/span' contains exact text 'Welcome to BBC.com'.</msg>
+<status status="PASS" starttime="20220125 19:39:40.159" endtime="20220125 19:39:40.256"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:40.158" endtime="20220125 19:39:40.256"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:40.120" endtime="20220125 19:39:40.256"/>
+</kw>
+<kw name="When BBCNewsActionsMenu.Search For" library="BBCNewsActionsMenu">
+<arg>Houghton Mifflin Harcourt</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${search}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220125 19:39:40.257" endtime="20220125 19:39:40.272"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5s</arg>
+<arg>Click Element</arg>
+<arg>${search}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${search}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:40.273" level="INFO">Clicking element '//input[@id="orb-search-q"]'.</msg>
+<status status="PASS" starttime="20220125 19:39:40.273" endtime="20220125 19:39:40.343"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:40.272" endtime="20220125 19:39:40.343"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${search}</arg>
+<arg>${search_text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:40.344" level="INFO">Typing text 'Houghton Mifflin Harcourt' into text field '//input[@id="orb-search-q"]'.</msg>
+<status status="PASS" starttime="20220125 19:39:40.343" endtime="20220125 19:39:40.525"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${search}</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220125 19:39:40.526" level="INFO">Sending key(s) ('ENTER',) to //input[@id="orb-search-q"] element.</msg>
+<msg timestamp="20220125 19:39:40.829" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20220125 19:39:40.830" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20220125 19:39:40.525" endtime="20220125 19:39:42.221"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:40.257" endtime="20220125 19:39:42.221"/>
+</kw>
+<kw name="Then BBCNewsActionsMenu.Verify the Search Results" library="BBCNewsActionsMenu">
+<kw name="Get Element Count" library="SeleniumLibrary">
+<var>${count}</var>
+<arg>${search_results_list}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.265" level="INFO">${count} = 20</msg>
+<status status="PASS" starttime="20220125 19:39:42.225" endtime="20220125 19:39:42.265"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${create_search_results_list}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220125 19:39:42.267" level="INFO">${create_search_results_list} = []</msg>
+<status status="PASS" starttime="20220125 19:39:42.266" endtime="20220125 19:39:42.267"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>1</value>
+<value>${count} + 1</value>
+<iter>
+<var name="${i}">1</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.330" level="INFO">${search_results} = Vivendi buys US education publisher</msg>
+<status status="PASS" starttime="20220125 19:39:42.270" endtime="20220125 19:39:42.330"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.330" endtime="20220125 19:39:42.331"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.269" endtime="20220125 19:39:42.331"/>
+</iter>
+<iter>
+<var name="${i}">2</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.362" level="INFO">${search_results} = French media and utility giant Vivendi snaps up US independent education publisher Houghton Mifflin in $1.7bn deal.</msg>
+<status status="PASS" starttime="20220125 19:39:42.331" endtime="20220125 19:39:42.362"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.362" endtime="20220125 19:39:42.362"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.331" endtime="20220125 19:39:42.363"/>
+</iter>
+<iter>
+<var name="${i}">3</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.394" level="INFO">${search_results} = Naomi Wolf: US publisher cancels book release after accuracy concerns</msg>
+<status status="PASS" starttime="20220125 19:39:42.363" endtime="20220125 19:39:42.394"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.395" endtime="20220125 19:39:42.395"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.363" endtime="20220125 19:39:42.395"/>
+</iter>
+<iter>
+<var name="${i}">4</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.423" level="INFO">${search_results} = A BBC radio interview revealed the author had misunderstood British legal terms about homosexuality.</msg>
+<status status="PASS" starttime="20220125 19:39:42.395" endtime="20220125 19:39:42.423"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.423" endtime="20220125 19:39:42.423"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.395" endtime="20220125 19:39:42.423"/>
+</iter>
+<iter>
+<var name="${i}">5</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.444" level="INFO">${search_results} = Dick sci-fi journals to come out</msg>
+<status status="PASS" starttime="20220125 19:39:42.424" endtime="20220125 19:39:42.444"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.444" endtime="20220125 19:39:42.445"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.423" endtime="20220125 19:39:42.445"/>
+</iter>
+<iter>
+<var name="${i}">6</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.465" level="INFO">${search_results} = Exegesis, the journals of science fiction author Philip K Dick, will be published next year.</msg>
+<status status="PASS" starttime="20220125 19:39:42.445" endtime="20220125 19:39:42.465"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.466" endtime="20220125 19:39:42.466"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.445" endtime="20220125 19:39:42.466"/>
+</iter>
+<iter>
+<var name="${i}">7</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.487" level="INFO">${search_results} = Epic photographic odyssey that documented Native Americans</msg>
+<status status="PASS" starttime="20220125 19:39:42.466" endtime="20220125 19:39:42.487"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.487" endtime="20220125 19:39:42.487"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.466" endtime="20220125 19:39:42.487"/>
+</iter>
+<iter>
+<var name="${i}">8</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.511" level="INFO">${search_results} = At the dawn of the 20th century, photographer Edward Curtis captured the dwindling Native American population in stunning photographs.</msg>
+<status status="PASS" starttime="20220125 19:39:42.487" endtime="20220125 19:39:42.511"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.511" endtime="20220125 19:39:42.511"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.487" endtime="20220125 19:39:42.511"/>
+</iter>
+<iter>
+<var name="${i}">9</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.534" level="INFO">${search_results} = Egypt uprising figure Wael Ghonim signs book deal</msg>
+<status status="PASS" starttime="20220125 19:39:42.512" endtime="20220125 19:39:42.534"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.534" endtime="20220125 19:39:42.534"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.511" endtime="20220125 19:39:42.534"/>
+</iter>
+<iter>
+<var name="${i}">10</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.553" level="INFO">${search_results} = Wael Ghonim, the Google executive seen as a key figure in the protests in Egypt that ousted President Hosni Mubarak, signs a book deal.</msg>
+<status status="PASS" starttime="20220125 19:39:42.534" endtime="20220125 19:39:42.553"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.553" endtime="20220125 19:39:42.554"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.534" endtime="20220125 19:39:42.554"/>
+</iter>
+<iter>
+<var name="${i}">11</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.574" level="INFO">${search_results} = US publisher delays Naomi Wolf's book over accuracy concerns</msg>
+<status status="PASS" starttime="20220125 19:39:42.554" endtime="20220125 19:39:42.574"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.574" endtime="20220125 19:39:42.574"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.554" endtime="20220125 19:39:42.574"/>
+</iter>
+<iter>
+<var name="${i}">12</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.595" level="INFO">${search_results} = It comes after it emerged in a BBC radio interview that she had misunderstood British legal terms.</msg>
+<status status="PASS" starttime="20220125 19:39:42.575" endtime="20220125 19:39:42.595"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.595" endtime="20220125 19:39:42.595"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.575" endtime="20220125 19:39:42.596"/>
+</iter>
+<iter>
+<var name="${i}">13</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.617" level="INFO">${search_results} = Media giants back Wind parody</msg>
+<status status="PASS" starttime="20220125 19:39:42.596" endtime="20220125 19:39:42.617"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.617" endtime="20220125 19:39:42.618"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.596" endtime="20220125 19:39:42.618"/>
+</iter>
+<iter>
+<var name="${i}">14</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.641" level="INFO">${search_results} = Microsoft and a group of US media companies back the publication of a parody of the classic novel Gone With the Wind.</msg>
+<status status="PASS" starttime="20220125 19:39:42.618" endtime="20220125 19:39:42.641"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.642" endtime="20220125 19:39:42.642"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.618" endtime="20220125 19:39:42.642"/>
+</iter>
+<iter>
+<var name="${i}">15</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.669" level="INFO">${search_results} = Amazon Matchbook offer bundles print and ebooks</msg>
+<status status="PASS" starttime="20220125 19:39:42.642" endtime="20220125 19:39:42.669"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.669" endtime="20220125 19:39:42.670"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.642" endtime="20220125 19:39:42.670"/>
+</iter>
+<iter>
+<var name="${i}">16</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.695" level="INFO">${search_results} = Amazon is to offer US shoppers the ability to obtain digital copies of previously purchased printed books for free or at a discount.</msg>
+<status status="PASS" starttime="20220125 19:39:42.670" endtime="20220125 19:39:42.695"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.695" endtime="20220125 19:39:42.696"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.670" endtime="20220125 19:39:42.696"/>
+</iter>
+<iter>
+<var name="${i}">17</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.718" level="INFO">${search_results} = Wind parody wins appeal</msg>
+<status status="PASS" starttime="20220125 19:39:42.696" endtime="20220125 19:39:42.718"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.718" endtime="20220125 19:39:42.718"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.696" endtime="20220125 19:39:42.718"/>
+</iter>
+<iter>
+<var name="${i}">18</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.741" level="INFO">${search_results} = A US federal appeals court affirms a May ruling that a controversial parody of Gone With The Wind is entirely legal.</msg>
+<status status="PASS" starttime="20220125 19:39:42.719" endtime="20220125 19:39:42.741"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.742" endtime="20220125 19:39:42.742"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.718" endtime="20220125 19:39:42.742"/>
+</iter>
+<iter>
+<var name="${i}">19</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.763" level="INFO">${search_results} = Markets applaud Vivendi divorce</msg>
+<status status="PASS" starttime="20220125 19:39:42.742" endtime="20220125 19:39:42.763"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.764" endtime="20220125 19:39:42.764"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.742" endtime="20220125 19:39:42.764"/>
+</iter>
+<iter>
+<var name="${i}">20</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${search_results}</var>
+<arg>xpath=(${search_results_list})[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220125 19:39:42.783" level="INFO">${search_results} = The French media firm's decision to split from its lucrative but incongruous water subsidiary is greeted with approval by investors.</msg>
+<status status="PASS" starttime="20220125 19:39:42.764" endtime="20220125 19:39:42.783"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>${search_results}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220125 19:39:42.783" endtime="20220125 19:39:42.783"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.764" endtime="20220125 19:39:42.784"/>
+</iter>
+<status status="PASS" starttime="20220125 19:39:42.267" endtime="20220125 19:39:42.784"/>
+</for>
+<kw name="Log List" library="Collections">
+<arg>${create_search_results_list}</arg>
+<arg>INFO</arg>
+<doc>Logs the length and contents of the ``list`` using given ``level``.</doc>
+<msg timestamp="20220125 19:39:42.784" level="INFO">List length is 20 and it contains following items:
+0: Vivendi buys US education publisher
+1: French media and utility giant Vivendi snaps up US independent education publisher Houghton Mifflin in $1.7bn deal.
+2: Naomi Wolf: US publisher cancels book release after accuracy concerns
+3: A BBC radio interview revealed the author had misunderstood British legal terms about homosexuality.
+4: Dick sci-fi journals to come out
+5: Exegesis, the journals of science fiction author Philip K Dick, will be published next year.
+6: Epic photographic odyssey that documented Native Americans
+7: At the dawn of the 20th century, photographer Edward Curtis captured the dwindling Native American population in stunning photographs.
+8: Egypt uprising figure Wael Ghonim signs book deal
+9: Wael Ghonim, the Google executive seen as a key figure in the protests in Egypt that ousted President Hosni Mubarak, signs a book deal.
+10: US publisher delays Naomi Wolf's book over accuracy concerns
+11: It comes after it emerged in a BBC radio interview that she had misunderstood British legal terms.
+12: Media giants back Wind parody
+13: Microsoft and a group of US media companies back the publication of a parody of the classic novel Gone With the Wind.
+14: Amazon Matchbook offer bundles print and ebooks
+15: Amazon is to offer US shoppers the ability to obtain digital copies of previously purchased printed books for free or at a discount.
+16: Wind parody wins appeal
+17: A US federal appeals court affirms a May ruling that a controversial parody of Gone With The Wind is entirely legal.
+18: Markets applaud Vivendi divorce
+19: The French media firm's decision to split from its lucrative but incongruous water subsidiary is greeted with approval by investors.</msg>
+<status status="PASS" starttime="20220125 19:39:42.784" endtime="20220125 19:39:42.784"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.224" endtime="20220125 19:39:42.784"/>
+</kw>
+<kw name="End Web Test" library="Common" type="TEARDOWN">
+<doc>Closes the browser</doc>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220125 19:39:42.785" endtime="20220125 19:39:45.179"/>
+</kw>
+<status status="PASS" starttime="20220125 19:39:42.785" endtime="20220125 19:39:45.179"/>
+</kw>
+<doc>This test is to verify the search reuslts</doc>
+<tag>UI Functional Test</tag>
+<status status="PASS" starttime="20220125 19:39:35.254" endtime="20220125 19:39:45.181"/>
+</test>
+<doc>BBC Test Cases</doc>
+<status status="PASS" starttime="20220125 19:39:11.766" endtime="20220125 19:39:45.185"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="4" fail="0" skip="0">UI Functional Test</stat>
+</tag>
+<suite>
+<stat pass="4" fail="0" skip="0" id="s1" name="BBCNews">BBCNews</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
